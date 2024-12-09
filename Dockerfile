@@ -53,5 +53,17 @@ ENV NODE_ENV=production
 ENV COMMIT_HASH=$COMMIT_HASH
 ENV BUILD_DATE=$BUILD_DATE
 ENV ENV_FILE=/config
+ARG BASHIO_VERSION="v0.16.2"
+
+RUN apt update && apt install -y curl
+RUN curl -J -L -o /tmp/bashio.tar.gz \
+        "https://github.com/hassio-addons/bashio/archive/${BASHIO_VERSION}.tar.gz" \
+    && mkdir /tmp/bashio \
+    && tar zxvf \
+        /tmp/bashio.tar.gz \
+        --strip 1 -C /tmp/bashio \
+    \
+    && mv /tmp/bashio/lib /usr/lib/bashio \
+    && ln -s /usr/lib/bashio/bashio /usr/bin/bashio
 
 CMD ["tini", "--", "node", "--enable-source-maps", "dist/scripts/migrate-and-start.js"]
