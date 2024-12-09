@@ -3,6 +3,7 @@ description: "🎧 a self-hosted Discord music bot that doesn't suck "
 version: "2.10.0"
 slug: "muse"
 init: false
+image: ghcr.io/museofficial/muse:2.10.0
 arch:
   - aarch64
   - amd64
