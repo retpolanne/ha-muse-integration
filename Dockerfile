@@ -55,7 +55,7 @@ ENV BUILD_DATE=$BUILD_DATE
 ENV ENV_FILE=/config
 ARG BASHIO_VERSION="v0.16.2"
 
-RUN apt update && apt install -y curl
+RUN apt update && apt install -y curl jq
 RUN curl -J -L -o /tmp/bashio.tar.gz \
         "https://github.com/hassio-addons/bashio/archive/${BASHIO_VERSION}.tar.gz" \
     && mkdir /tmp/bashio \
