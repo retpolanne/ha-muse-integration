@@ -67,4 +67,3 @@ RUN curl -J -L -o /tmp/bashio.tar.gz \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio
 
 CMD ["./run.sh"]
-CMD ["tini", "--", "node", "--enable-source-maps", "dist/scripts/migrate-and-start.js"]
